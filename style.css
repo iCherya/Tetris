@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    background: #9EAD86;
+}
+.main {
+    height: 640px;
+    width: 320px;
+    margin: 10px auto 0;
+    border: 4px solid #272E1D;
+    font-size: 0;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.cell {
+    width: 30px;
+    height: 30px;
+    border: 4px solid #879371;
+    box-sizing: border-box;
+    margin: 1px;
+}
+.moving-cell {
+    border-color: black;
+}
+.fixed-cell {
+    background: black;
+    border-color: black;
+}
+.cell::before, 
+.moving-cell::before,
+.fixed-cell::before
+ {
+    content: " ";
+    width: 80%;
+    height: 80%;
+    display: block;
+    margin: 10% 10%;
+}
+.cell::before {
+    background-color: #879371;
+}
+.moving-cell::before,
+.fixed-cell::before {
+    background-color: black;
+}
