@@ -1,6 +1,7 @@
 body {
     margin: 0;
     background: #9EAD86;
+    font-family: sans-serif;
 }
 .main {
     height: 640px;
