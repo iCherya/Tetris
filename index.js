@@ -7,9 +7,6 @@ const pauseBtn = document.querySelector('#pause');
 const musicBtn = document.querySelector('#music');
 const gameOver = document.querySelector('.game-over');
 
-
-
-
 let playField = [
     [0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0],
@@ -41,12 +38,12 @@ let score = 0,
         1: {
             scorePerLine: 10,
             speed: 400,
-            nexLevelScore: 50,
+            nexLevelScore: 100,
         },
         2: {
             scorePerLine: 20,
             speed: 300,
-            nexLevelScore: 500,
+            nexLevelScore: 300,
         },
         3: {
             scorePerLine: 30,
@@ -263,7 +260,6 @@ function fixCell() {
 }
 
 function moveFigureDown() {
-    
     activeFigure.y += 1;
     if (hasCollisions()) {
         activeFigure.y -= 1;
@@ -332,7 +328,7 @@ document.onkeydown = function(e) {
             }
         } else if (e.keyCode === 40) {
             dropFigure();
-        } else if (e.keyCode === 32 || (e.keyCode === 38)) {
+        } else if (e.keyCode === 38) {
             rotateFigure();
         }
 
@@ -349,6 +345,7 @@ function updateGameState() {
 }
 
 pauseBtn.addEventListener('click', (e) => {
+    
     if (e.target.innerHTML === "Pause") {
         e.target.innerHTML = "Continue";
         clearTimeout(getTimerID);
@@ -360,6 +357,10 @@ pauseBtn.addEventListener('click', (e) => {
 });
 
 startBtn.addEventListener('click', (e) => {
+    currentLevel = 1;
+    score = 0;
+    scoreEl.innerText = '0';
+    levelEl.innerText = '1';
     startBtn.disabled = true;
     e.target.innerHTML = "Enjoy";
     isPaused = false;

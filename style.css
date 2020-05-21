@@ -2,13 +2,12 @@ body {
     margin: 0;
     background: #9EAD86;
     font-family: 'IBM Plex Mono', monospace;
+    font-size: 20px;
 }
-
-
 
 .game {
     display: flex;
-    width: 800px;
+    width: 1000px;
     margin: 40px auto 0;
     justify-content: space-around;
 }
@@ -52,13 +51,15 @@ body {
     background-color: black;
 }
 .aside {
-    flex: 0 0 200px;
+    flex: 0 0 160px;
     position: relative;
-    font-size: 20px;
 }
-
+.leftside {
+    flex: 0 0 150px;
+}
 .controls {
     margin-bottom: 20px;
+    height: 150px;
 }
 .controls__button {
     width: 150px;
@@ -66,12 +67,13 @@ body {
     border: 2px solid black;
     color: black;
     padding: 5px 10px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 20px;
     font-family: 'IBM Plex Mono', monospace;
+    cursor: pointer;
 }
 .controls__button:disabled {
     color: rgba(0, 0, 0, 0.2);
@@ -113,7 +115,7 @@ ul.instructions__content {
     z-index: 2;
 }
 
-@media screen and (max-width: 800px) {
+@media all and (max-width: 800px) {
     body > * {
       display: none;
     }
