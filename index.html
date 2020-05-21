@@ -8,8 +8,40 @@
     <title>Tetris Game</title>
 </head>
 <body>
-    <div>Score: <span id="score">0</span></div>
-    <div>Level: <span id="level">1</span></div>
-    <div class="main"></div>
+
+    
+    <section>
+        <div class="game-over">GAME OVER!</div>
+        <div class="game">
+            <div class="main"></div>
+            <div class="aside">
+                <div class="controls">
+                    
+                    <button class="controls__button" id="start">Start</button>
+                    <button class="controls__button" id="pause">Pause</button>
+                    <audio id="themeSong"
+                        <source src="tetris_theme.mp3"
+                        type="audio/mp3" loop>
+                        Your user agent does not support the HTML5 Audio element.
+                    </audio>
+                    <button class="controls__button innactive" id="music" onclick="aud_play_pause()">Music</button>
+                </div>
+
+                <div>Score: <span id="score">0</span></div>
+                <div>Level: <span id="level">1</span></div>
+                
+                <div class="next-figure"></div>
+                <div class="instructions">
+                    <div class="instructions__title">Instructions</div>
+                    <ul class="instructions__content">
+                            <li>&#9040; or &#9251; - Rotate</li>
+                            <li>&#9047; - Drop figure</li>
+                            <li>&#9031; - Move Left</li>
+                            <li>&#9032; - Move right</li>
+                    </ul>
+                </div>
+            </div>  
+        </div>
+    </section>
 </body>
 </html>
