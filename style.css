@@ -60,8 +60,8 @@ body {
 .controls {
     margin-bottom: 20px;
     height: 150px;
-}
-.controls__button {
+ }
+ .controls__button {
     width: 150px;
     background: #9EAD86;
     border: 2px solid black;
@@ -74,7 +74,7 @@ body {
     font-size: 20px;
     font-family: 'IBM Plex Mono', monospace;
     cursor: pointer;
-}
+ } 
 .controls__button:disabled {
     color: rgba(0, 0, 0, 0.2);
 }
@@ -83,7 +83,7 @@ body {
     transform: translateY(4px);
 }
 .controls__button:focus {
-    display: none;
+    outline: black dotted 3px;
 }
 
 .next-figure {

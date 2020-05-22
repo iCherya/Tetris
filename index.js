@@ -29,7 +29,7 @@ let playField = [
     [0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0],
 ];
-
+let flagStartGame = true;
 let score = 0,
     getTimerID,
     currentLevel = 1,
@@ -104,16 +104,21 @@ let activeFigure = getNewFigure();
 let nextFigure = getNewFigure();
 
 function aud_play_pause() {
-    var myAudio = document.getElementById("themeSong");
+
+    let myAudio = document.getElementById("themeSong");
     if (myAudio.paused) {
       myAudio.play();
-      musicBtn.classList.toggle('innactive')
+      musicBtn.classList.toggle('innactive');
+      musicBtn.blur();
     } else {
       myAudio.pause();
-      musicBtn.classList.toggle('innactive')
+      musicBtn.classList.toggle('innactive');
+      musicBtn.blur();
     }
     
   }
+
+
 
 function render() {
     let mainInnerHTML = '';
@@ -311,10 +316,22 @@ function reset() {
     render();
     gameOver.style.display = "flex";
     startBtn.disabled = false;
+    pauseBtn.disabled = true;
     startBtn.innerHTML = "Play again";
+    flagStartGame = true;
 }
 
 document.onkeydown = function(e) {
+    
+    if (e.keyCode === 13) {
+        if (flagStartGame) {
+            gameIsStarts();
+        flagStartGame = false;
+        }
+    }
+    if (e.keyCode === 32) {
+
+    }
     if (!isPaused) {
         if (e.keyCode === 37) {
             activeFigure.x -= 1;
@@ -331,7 +348,6 @@ document.onkeydown = function(e) {
         } else if (e.keyCode === 38) {
             rotateFigure();
         }
-
         updateGameState();
     }
 };
@@ -345,28 +361,39 @@ function updateGameState() {
 }
 
 pauseBtn.addEventListener('click', (e) => {
-    
-    if (e.target.innerHTML === "Pause") {
-        e.target.innerHTML = "Continue";
-        clearTimeout(getTimerID);
-    } else {
-        e.target.innerHTML = "Pause";
-        getTimerID = setTimeout(startGame, possibleLevels[currentLevel].speed);
-    }
-    isPaused = !isPaused;
+    gameIsPaused();
 });
 
-startBtn.addEventListener('click', (e) => {
+startBtn.addEventListener('click', () => {
+    gameIsStarts();
+});
+
+function gameIsPaused() {
+    if (pauseBtn.textContent === "Pause") {
+        pauseBtn.textContent = "Continue";
+        clearTimeout(getTimerID);
+    } else {
+        pauseBtn.textContent = "Pause";
+        getTimerID = setTimeout(startGame, possibleLevels[currentLevel].speed);
+        
+    }
+    pauseBtn.blur();
+    isPaused = !isPaused;
+}
+
+function gameIsStarts() {
     currentLevel = 1;
     score = 0;
     scoreEl.innerText = '0';
     levelEl.innerText = '1';
+    pauseBtn.disabled = false;
     startBtn.disabled = true;
-    e.target.innerHTML = "Enjoy";
+    startBtn.textContent = "Enjoy";
     isPaused = false;
     getTimerID = setTimeout(startGame, possibleLevels[currentLevel].speed);
     gameOver.style.display = 'none';
-});
+}
+
 
 scoreEl.innerHTML = score;
 levelEl.innerHTML = currentLevel;
