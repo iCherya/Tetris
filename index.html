@@ -9,10 +9,12 @@
 </head>
 <body>
     <section>
-        <div class="game-over">GAME OVER!</div>
+        <div id="game-over" class="game-status">GAME OVER!</div>
+        <div id="game-pause" class="game-status">PAUSED</div>
         <div class="game">
             <div class="leftside">
                 <div class="stats">
+                    <div>Best: <span id="bestScore">0</span></div>
                     <div>Score: <span id="score">0</span></div>
                     <div>Level: <span id="level">1</span></div>
                 </div>
@@ -29,11 +31,12 @@
                 <div class="instructions">
                     <div class="instructions__title">Instructions</div>
                     <ul class="instructions__content">
-                            <li>&#9166; - Start game</li>
-                            <li>&#9040; - Rotate</li>
-                            <li>&#9047; - Drop figure</li>
-                            <li>&#9031; - Move Left</li>
-                            <li>&#9032; - Move right</li>
+                            <li>&#9166; Start game</li>
+                            <li>&#9251; Pause game</li><br>
+                            <li>&#9040; Rotate figure</li>
+                            <li>&#9047; Drop figure</li>
+                            <li>&#9031; Move Left</li>
+                            <li>&#9032; Move right</li>
                     </ul>
                 </div>
             </div>  

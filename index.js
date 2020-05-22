@@ -1,11 +1,13 @@
 let main = document.querySelector('.main');
+const bestScoreEl = document.querySelector('#bestScore');
 const scoreEl = document.querySelector('#score');
 const levelEl = document.querySelector('#level');
 const nextFigureEl = document.querySelector('.next-figure');
 const startBtn = document.querySelector('#start');
 const pauseBtn = document.querySelector('#pause');
 const musicBtn = document.querySelector('#music');
-const gameOver = document.querySelector('.game-over');
+const gameOverBlock = document.querySelector('#game-over');
+const gamePauseBlock = document.querySelector('#game-pause');
 
 let playField = [
     [0,0,0,0,0,0,0,0,0,0],
@@ -29,6 +31,7 @@ let playField = [
     [0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0],
 ];
+let bestScore = localStorage.getItem('scores') || 0;
 let flagStartGame = true;
 let score = 0,
     getTimerID,
@@ -233,8 +236,13 @@ function removeFullLines(){
             score += possibleLevels[currentLevel].scorePerLine * 12;
             break;
     }
+    if (score > bestScore) {
+        bestScore = score;
+        localStorage.setItem('scores', bestScore);
+    }
 
     scoreEl.innerHTML = score;
+    bestScoreEl.innerHTML = bestScore;
 
     if (score >= possibleLevels[currentLevel].nexLevelScore) {
         currentLevel++;
@@ -314,7 +322,7 @@ function reset() {
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ];
     render();
-    gameOver.style.display = "flex";
+    gameOverBlock.style.display = "flex";
     startBtn.disabled = false;
     pauseBtn.disabled = true;
     startBtn.innerHTML = "Play again";
@@ -322,7 +330,11 @@ function reset() {
 }
 
 document.onkeydown = function(e) {
-    
+    if (!pauseBtn.disabled) {
+        if (e.keyCode === 32) {
+            gameIsPaused();
+        }
+    }
     if (e.keyCode === 13) {
         if (flagStartGame) {
             gameIsStarts();
@@ -349,7 +361,7 @@ document.onkeydown = function(e) {
             rotateFigure();
         }
         updateGameState();
-    }
+    } 
 };
 
 function updateGameState() {
@@ -372,10 +384,11 @@ function gameIsPaused() {
     if (pauseBtn.textContent === "Pause") {
         pauseBtn.textContent = "Continue";
         clearTimeout(getTimerID);
+        gamePauseBlock.style.display = "flex";
     } else {
         pauseBtn.textContent = "Pause";
         getTimerID = setTimeout(startGame, possibleLevels[currentLevel].speed);
-        
+        gamePauseBlock.style.display = "none";
     }
     pauseBtn.blur();
     isPaused = !isPaused;
@@ -391,14 +404,14 @@ function gameIsStarts() {
     startBtn.textContent = "Enjoy";
     isPaused = false;
     getTimerID = setTimeout(startGame, possibleLevels[currentLevel].speed);
-    gameOver.style.display = 'none';
+    gameOverBlock.style.display = 'none';
 }
+
 
 
 scoreEl.innerHTML = score;
 levelEl.innerHTML = currentLevel;
-
-
+bestScoreEl.innerHTML = bestScore;
 render();
 
 
