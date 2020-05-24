@@ -357,7 +357,7 @@ document.onkeydown = function(e) {
             }
         } else if (e.keyCode === 40) {
             dropFigure();
-        } else if (e.keyCode === 38) {
+        } else if (e.keyCode === 38 || e.keyCode === 192) {
             rotateFigure();
         }
         updateGameState();

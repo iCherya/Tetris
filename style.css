@@ -106,7 +106,10 @@ ul.instructions__content {
 }
 .game-status {
     position: absolute;
-    width: 100%;
+    width: 50%;
+    left: 25%;
+    background: black;
+    color: #9EAD86;
     font-size: 60px;
     top: 200px;
     display: none;
