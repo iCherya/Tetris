@@ -10,26 +10,26 @@ const gameOverBlock = document.querySelector('#game-over');
 const gamePauseBlock = document.querySelector('#game-pause');
 
 let playField = [
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 ];
 let bestScore = localStorage.getItem('scores') || 0;
 let flagStartGame = true;
@@ -67,39 +67,39 @@ let score = 0,
 
 let figures = {
     o: [
-        [1,1],
-        [1,1],
+        [1, 1],
+        [1, 1],
     ],
     i: [
-        [1,1,1,1],
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0],
+        [1, 1, 1, 1],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
     ],
     s: [
-        [0,1,1],
-        [1,1,0],
-        [0,0,0],
+        [0, 1, 1],
+        [1, 1, 0],
+        [0, 0, 0],
     ],
     z: [
-        [1,1,0],
-        [0,1,1],
-        [0,0,0],
+        [1, 1, 0],
+        [0, 1, 1],
+        [0, 0, 0],
     ],
     l: [
-        [0,0,1],
-        [1,1,1],
-        [0,0,0],
+        [0, 0, 1],
+        [1, 1, 1],
+        [0, 0, 0],
     ],
     j: [
-        [1,0,0],
-        [1,1,1],
-        [0,0,0],
+        [1, 0, 0],
+        [1, 1, 1],
+        [0, 0, 0],
     ],
     t: [
-        [1,1,1],
-        [0,1,0],
-        [0,0,0],
+        [1, 1, 1],
+        [0, 1, 0],
+        [0, 0, 0],
     ],
 };
 
@@ -110,16 +110,16 @@ function aud_play_pause() {
 
     let myAudio = document.getElementById("themeSong");
     if (myAudio.paused) {
-      myAudio.play();
-      musicBtn.classList.toggle('innactive');
-      musicBtn.blur();
+        myAudio.play();
+        musicBtn.classList.toggle('innactive');
+        musicBtn.blur();
     } else {
-      myAudio.pause();
-      musicBtn.classList.toggle('innactive');
-      musicBtn.blur();
+        myAudio.pause();
+        musicBtn.classList.toggle('innactive');
+        musicBtn.blur();
     }
-    
-  }
+
+}
 
 
 
@@ -170,7 +170,7 @@ function addActiveFigure() {
         for (let x = 0; x < activeFigure.shape[y].length; x++) {
             if (activeFigure.shape[y][x] === 1) {
                 playField[activeFigure.y + y][activeFigure.x + x] = activeFigure.shape[y][x];
-            
+
             }
         }
     }
@@ -179,8 +179,8 @@ function addActiveFigure() {
 function rotateFigure() {
     const prevFigureState = activeFigure.shape;
 
-    activeFigure.shape = activeFigure.shape[0].map((val, index) => 
-    activeFigure.shape.map((row) => row[index]).reverse()
+    activeFigure.shape = activeFigure.shape[0].map((val, index) =>
+        activeFigure.shape.map((row) => row[index]).reverse()
     );
 
     if (hasCollisions()) {
@@ -192,10 +192,10 @@ function hasCollisions() {
     for (let y = 0; y < activeFigure.shape.length; y++) {
         for (let x = 0; x < activeFigure.shape[y].length; x++) {
             if (
-                activeFigure.shape[y][x] && 
+                activeFigure.shape[y][x] &&
                 (playField[activeFigure.y + y] === undefined ||
-                playField[activeFigure.y + y][activeFigure.x + x] === undefined ||
-                playField[activeFigure.y + y][activeFigure.x + x] === 2)
+                    playField[activeFigure.y + y][activeFigure.x + x] === undefined ||
+                    playField[activeFigure.y + y][activeFigure.x + x] === 2)
             ) {
                 return true;
             }
@@ -204,12 +204,12 @@ function hasCollisions() {
     return false;
 }
 
-function removeFullLines(){
+function removeFullLines() {
     let canRemoveLine = true,
         filledLines = 0;
     for (let y = 0; y < playField.length; y++) {
         for (let x = 0; x < playField[y].length; x++) {
-            if(playField[y][x] != 2) {
+            if (playField[y][x] != 2) {
                 canRemoveLine = false;
                 break;
             }
@@ -217,7 +217,7 @@ function removeFullLines(){
         if (canRemoveLine) {
             playField.splice(y, 1);
             playField.splice(0, 0, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
-            filledLines += 1; 
+            filledLines += 1;
         }
         canRemoveLine = true;
     }
@@ -256,7 +256,7 @@ function getNewFigure() {
         newFigure = figures[possibleFigures[rand]];
 
     return {
-        x: Math.floor((playField[0].length - newFigure[0].length)/2),
+        x: Math.floor((playField[0].length - newFigure[0].length) / 2),
         y: 0,
         shape: newFigure,
     };
@@ -265,7 +265,7 @@ function getNewFigure() {
 function fixCell() {
     for (let y = 0; y < playField.length; y++) {
         for (let x = 0; x < playField[y].length; x++) {
-            if(playField[y][x] === 1) {
+            if (playField[y][x] === 1) {
                 playField[y][x] = 2;
             }
         }
@@ -329,7 +329,7 @@ function reset() {
     flagStartGame = true;
 }
 
-document.onkeydown = function(e) {
+document.onkeydown = function (e) {
     if (!pauseBtn.disabled) {
         if (e.keyCode === 32) {
             gameIsPaused();
@@ -338,7 +338,7 @@ document.onkeydown = function(e) {
     if (e.keyCode === 13) {
         if (flagStartGame) {
             gameIsStarts();
-        flagStartGame = false;
+            flagStartGame = false;
         }
     }
     if (e.keyCode === 32) {
@@ -361,14 +361,14 @@ document.onkeydown = function(e) {
             rotateFigure();
         }
         updateGameState();
-    } 
+    }
 };
 
 function updateGameState() {
-    if(!isPaused) {
-    addActiveFigure();
-    render();
-    renderNextFigure();
+    if (!isPaused) {
+        addActiveFigure();
+        render();
+        renderNextFigure();
     }
 }
 

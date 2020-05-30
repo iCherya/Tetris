@@ -11,6 +11,7 @@ body {
     margin: 40px auto 0;
     justify-content: space-around;
 }
+
 .main {
     height: 640px;
     width: 320px;
@@ -19,6 +20,7 @@ body {
     display: flex;
     flex-wrap: wrap;
 }
+
 .cell {
     width: 30px;
     height: 30px;
@@ -26,42 +28,50 @@ body {
     box-sizing: border-box;
     margin: 1px;
 }
+
 .moving-cell {
     border-color: black;
 }
+
 .fixed-cell {
     background: black;
     border-color: black;
 }
-.cell::before, 
+
+.cell::before,
 .moving-cell::before,
-.fixed-cell::before
- {
+.fixed-cell::before {
     content: " ";
     width: 80%;
     height: 80%;
     display: block;
     margin: 10% 10%;
 }
+
 .cell::before {
     background-color: #879371;
 }
+
 .moving-cell::before,
 .fixed-cell::before {
     background-color: black;
 }
+
 .aside {
     flex: 0 0 160px;
     position: relative;
 }
+
 .leftside {
     flex: 0 0 150px;
 }
+
 .controls {
     margin-bottom: 20px;
     height: 150px;
 }
- .controls__button {
+
+.controls__button {
     width: 150px;
     background: #9EAD86;
     border: 2px solid black;
@@ -74,36 +84,44 @@ body {
     font-size: 20px;
     font-family: 'IBM Plex Mono', monospace;
     cursor: pointer;
- } 
+}
+
 .controls__button:disabled {
     color: rgba(0, 0, 0, 0.2);
 }
+
 .controls__button:active {
     box-shadow: 0 5px rgba(0, 0, 0, 0.2);
     transform: translateY(4px);
 }
+
 .controls__button:focus {
     outline: black dotted 3px;
 }
 
 .next-figure {
     margin-top: 20px;
-    font-size: 0;  
+    font-size: 0;
 }
+
 .next-figure .cell {
     display: inline-block;
 }
+
 .instructions {
     margin-top: 40px;
 }
+
 ul.instructions__content {
     list-style-type: none;
     padding-left: 0;
     font-size: 17px;
 }
+
 .innactive {
     text-decoration: line-through;
 }
+
 .game-status {
     position: absolute;
     width: 50%;
@@ -119,16 +137,17 @@ ul.instructions__content {
 }
 
 @media all and (max-width: 800px) {
-    body > * {
-      display: none;
+    body>* {
+        display: none;
     }
+
     body:before {
-      content: "Sorry. It only works on computer so far.";
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      width: 90%;
-      margin: 0 5%;
+        content: "Sorry. It only works on computer so far.";
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 90%;
+        margin: 0 5%;
     }
 }
