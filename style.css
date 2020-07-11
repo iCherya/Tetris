@@ -136,6 +136,21 @@ ul.instructions__content {
     z-index: 2;
 }
 
+.contacts-links {
+    text-align: center;
+    font-size: 0;
+    margin-top: 2rem;
+}
+
+.contacts-links svg {
+    margin: 0 5px;
+}
+
+.contacts-links svg:hover {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+}
+
 @media all and (max-width: 800px) {
     body>* {
         display: none;
